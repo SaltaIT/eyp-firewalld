@@ -17,7 +17,6 @@ class firewalld (
     {
       #https://tickets.puppetlabs.com/browse/PUP-1253
       # Fix Version/s: PUP 4.2.0
-      #TODO: detectar versio de puppet i escollir el metode
 
       #puppetversion => 3.8.7
       if(versioncmp($::puppetversion, '4.2.0')>=0)
