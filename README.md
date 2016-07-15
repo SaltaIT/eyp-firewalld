@@ -20,7 +20,7 @@ firewalld management
 
 ## Module Description
 
-disables firewalld
+stops and masks firewalld
 
 ## Setup
 
@@ -34,19 +34,36 @@ This module requires pluginsync enabled
 
 ### Beginning with firewalld
 
-
+```puppet
+class { 'firewalld': }
+```
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+```puppet
+class { 'firewalld':
+  ensure => 'masked',
+}
+```
+
+```puppet
+class { 'firewalld':
+  ensure => 'running',
+}
+```
 
 ## Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+### classes
+
+#### firewalld
+
+* **ensure**: **running**/**masked** (default: masked)
+* **enable**: (default: true)
+
+### defines
+
+#### addport
 
 ## Limitations
 
