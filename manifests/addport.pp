@@ -4,6 +4,7 @@ define firewalld::addport (
                             $port      = $name,
                             $zone      = 'public',
                             $protocol  = 'tcp',
+                            $ensure    = 'present'
                           ) {
   Exec {
     path => '/usr/sbin:/usr/bin:/sbin:/bin',
@@ -14,10 +15,22 @@ define firewalld::addport (
     fail('firewalld undefined, please check firewalld class and firewalld::ensure')
   }
 
-  # command => "firewall-cmd --permanent --zone=public --add-port=5666/tcp",
-  exec { "firewalld add port ${port} ${name} ${zone}":
-    command => inline_template('firewall-cmd <% if @permanent %>--permanent<% end %> --zone=<%= @zone %> --add-port=<%= @port %>/<%= @protocol %>'),
-    notify => Service['firewalld'],
+  if($ensure=='present')
+  {
+    # command => "firewall-cmd --permanent --zone=public --add-port=5666/tcp",
+    exec { "firewalld add port ${port} ${name} ${zone}":
+      command => inline_template('firewall-cmd <% if @permanent %>--permanent<% end %> --zone=<%= @zone %> --add-port=<%= @port %>/<%= @protocol %>'),
+      notify  => Service['firewalld'],
+      unless  => "firewall-cmd --zone=${zone} --list-ports | grep '${port}/${protocol}'",
+    }
+  }
+  else
+  {
+    exec { "firewalld add port ${port} ${name} ${zone}":
+      command => inline_template('firewall-cmd <% if @permanent %>--permanent<% end %> --zone=<%= @zone %> --remove-port=<%= @port %>/<%= @protocol %>'),
+      notify  => Service['firewalld'],
+      onlyif  => "firewall-cmd --zone=${zone} --list-ports | grep '${port}/${protocol}'",
+    }
   }
 
 }
