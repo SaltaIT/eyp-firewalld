@@ -26,7 +26,7 @@ define firewalld::addport (
   }
   else
   {
-    exec { "firewalld add port ${port} ${name} ${zone}":
+    exec { "firewalld remove port ${port} ${name} ${zone}":
       command => inline_template('firewall-cmd <% if @permanent %>--permanent<% end %> --zone=<%= @zone %> --remove-port=<%= @port %>/<%= @protocol %>'),
       notify  => Service['firewalld'],
       onlyif  => "firewall-cmd --zone=${zone} --list-ports | grep '${port}/${protocol}'",
