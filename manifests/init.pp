@@ -15,10 +15,10 @@ class firewalld (
   {
     'masked':
     {
-      #https://tickets.puppetlabs.com/browse/PUP-1253
+      # https://tickets.puppetlabs.com/browse/PUP-1253
       # Fix Version/s: PUP 4.2.0
 
-      #puppetversion => 3.8.7
+      # puppetversion => 3.8.7
       if(versioncmp($::puppetversion, '4.2.0')>=0)
       {
         service { 'firewalld':
