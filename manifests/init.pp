@@ -18,7 +18,7 @@ class firewalld (
       # https://tickets.puppetlabs.com/browse/PUP-1253
       # Fix Version/s: PUP 4.2.0
 
-      # puppetversion => 3.8.7
+      # fact: puppetversion
       if(versioncmp($::puppetversion, '4.2.0')>=0)
       {
         service { 'firewalld':
