@@ -4,9 +4,9 @@
   "author": "eyp",
   "summary": "stops and masks firewalld",
   "license": "Apache-2.0",
-  "source": "",
-  "project_page": null,
-  "issues_url": null,
+  "source": "https://github.com/NTTCom-MS/eyp-firewalld",
+  "project_page": "https://github.com/NTTCom-MS/eyp-firewalld",
+  "issues_url": "https://github.com/NTTCom-MS/eyp-firewalld/issues",
   "dependencies": [
     {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"}
   ],
@@ -30,6 +30,12 @@
     {
       "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [ "7" ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.8.0"
     }
   ]
 }
