@@ -8,8 +8,8 @@ class firewalld (
                 ) inherits firewalld::params {
 
   Exec {
-		path => '/bin:/sbin:/usr/bin:/usr/sbin',
-	}
+    path => '/bin:/sbin:/usr/bin:/usr/sbin',
+  }
 
   case $ensure
   {
@@ -30,7 +30,7 @@ class firewalld (
       {
         exec { 'systemctl stop and mask firewalld':
           command => "bash -c 'systemctl stop firewalld; systemctl mask firewalld'",
-          unless => 'systemctl list-unit-files | grep "firewalld.service" | grep masked',
+          unless  => 'systemctl list-unit-files | grep "firewalld.service" | grep masked',
         }
       }
     }
