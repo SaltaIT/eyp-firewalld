@@ -15,20 +15,20 @@ class firewalld (
       # Fix Version/s: PUP 4.2.0
 
       # fact: puppetversion
-      if(versioncmp($::puppetversion, '4.2.0')>=0)
-      {
-        service { 'firewalld':
-          ensure => 'stopped',
-          enable => 'mask',
-        }
+      # if(versioncmp($::puppetversion, '4.2.0')>=0)
+      # {
+      #   service { 'firewalld':
+      #     ensure => 'stopped',
+      #     enable => 'mask',
+      #   }
+      # }
+      # else
+      # {
+      exec { 'systemctl stop and mask firewalld':
+        command => "bash -c 'systemctl stop firewalld; systemctl mask firewalld'",
+        unless  => 'systemctl list-unit-files | grep "firewalld.service" | grep masked',
       }
-      else
-      {
-        exec { 'systemctl stop and mask firewalld':
-          command => "bash -c 'systemctl stop firewalld; systemctl mask firewalld'",
-          unless  => 'systemctl list-unit-files | grep "firewalld.service" | grep masked',
-        }
-      }
+      # }
     }
     'running':
     {
