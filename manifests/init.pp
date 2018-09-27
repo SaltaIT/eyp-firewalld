@@ -1,7 +1,3 @@
-# === Copyright
-#
-# Copyright 2015 Your name here, unless otherwise noted.
-#
 class firewalld (
                   $ensure = 'masked',
                   $enable = true,
@@ -43,6 +39,4 @@ class firewalld (
     }
     default: { fail("unsupported firewalld::ensure: ${ensure}") }
   }
-
-
 }
