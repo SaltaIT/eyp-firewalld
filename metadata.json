@@ -1,12 +1,12 @@
 {
   "name": "eyp-firewalld",
-  "version": "0.1.5",
-  "author": "eyp",
+  "version": "1.0.5",
+  "author": "Jordi Prats",
   "summary": "stops and masks firewalld",
   "license": "Apache-2.0",
-  "source": "https://github.com/NTTCom-MS/eyp-firewalld",
-  "project_page": "https://github.com/NTTCom-MS/eyp-firewalld",
-  "issues_url": "https://github.com/NTTCom-MS/eyp-firewalld/issues",
+  "source": "https://github.com/SaltaIT/eyp-firewalld",
+  "project_page": "https://github.com/SaltaIT/eyp-firewalld",
+  "issues_url": "https://github.com/SaltaIT/eyp-firewalld/issues",
   "dependencies": [
     {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"}
   ],
@@ -35,7 +35,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 3.8.0"
+      "version_requirement": ">= 4.0.0"
     }
   ]
 }
